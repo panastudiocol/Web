@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pana Studio · Diseño y desarrollo web</title>
+<meta name="description" content="Estudio de diseño y desarrollo en LATAM. Webs, landings, tiendas online, reservas, identidad de marca y automatización de WhatsApp.">
+<meta property="og:title" content="Pana Studio · Diseño y desarrollo web">
+<meta property="og:description" content="Webs, landings, tiendas, reservas e identidad de marca. Precio y plazo por escrito.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img6.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" type="image/png" href="assets/img6.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&amp;family=Figtree:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#FCF7EC; color:#3D472B; font-family:Figtree, system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#C67139; text-decoration:none; }
+  a:hover { color:#3D472B; }
+  input, textarea, button, select { font-family:Figtree, system-ui, sans-serif; }
+  input:focus, textarea:focus { outline:2px solid #8FA073; outline-offset:1px; }
+  ::selection { background:#F6A06B; color:#3D472B; }
+  @keyframes panaLetra { 0% { transform:translateY(72px) rotate(-7deg); opacity:0 } 55% { transform:translateY(-10px) rotate(2deg); opacity:1 } 100% { transform:translateY(0) rotate(0deg); opacity:1 } }
+  @keyframes panaSube { 0% { transform:translateY(110px) scale(.85); opacity:0 } 60% { transform:translateY(-14px) scale(1.03); opacity:1 } 100% { transform:translateY(0) scale(1); opacity:1 } }
+  @keyframes panaFade { 0% { opacity:0 } 100% { opacity:1 } }
+  @keyframes panaSalir { 0% { opacity:1 } 100% { opacity:0; visibility:hidden } }
+  @keyframes panaFlota { 0%,100% { transform:translateY(0) rotate(-2deg) } 50% { transform:translateY(-13px) rotate(2deg) } }
+  @keyframes panaVapor { 0% { transform:translateY(8px) scale(.8); opacity:0 } 45% { opacity:.65 } 100% { transform:translateY(-40px) scale(1.35); opacity:0 } }
+  @keyframes panaBlob { 0%,100% { transform:translate(0,0) scale(1) } 33% { transform:translate(46px,-34px) scale(1.09) } 66% { transform:translate(-34px,28px) scale(.94) } }
+  @keyframes panaPuntos { 0% { background-position:0 0 } 100% { background-position:130px 130px } }
+  @keyframes panaBrasa { 0%,100% { opacity:.35 } 50% { opacity:.9 } }
+</style>
+</helmet>
+<div data-s="page" style="min-height:100vh; overflow-x:hidden; position:relative; z-index:0">
+
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden">
+    <div style="position:absolute; left:-8vw; top:-6vh; width:46vw; height:46vw; border-radius:50%; background:#F6A06B; opacity:.2; filter:blur(80px); animation:panaBlob 26s ease-in-out infinite"></div>
+    <div style="position:absolute; right:-10vw; top:22vh; width:38vw; height:38vw; border-radius:50%; background:#8FA073; opacity:.16; filter:blur(90px); animation:panaBlob 34s ease-in-out infinite reverse"></div>
+    <div style="position:absolute; left:26vw; bottom:-14vh; width:42vw; height:42vw; border-radius:50%; background:#6B7F4E; opacity:.13; filter:blur(100px); animation:panaBlob 30s ease-in-out 4s infinite"></div>
+    <div style="position:absolute; inset:0; opacity:.4; background-image:radial-gradient(rgba(61,71,43,.13) 1px, transparent 1px); background-size:24px 24px; animation:panaPuntos 34s linear infinite"></div>
+  </div>
+
+  <div data-pana-cursor="1" style="position:fixed; left:0; top:0; width:34px; height:34px; margin:-17px 0 0 -17px; border:1.5px solid #C67139; border-radius:50%; pointer-events:none; z-index:95; opacity:0; transition:opacity .3s, width .18s, height .18s"></div>
+  <div data-pana-crumb="1" style="position:fixed; left:0; top:0; width:7px; height:7px; margin:-3.5px 0 0 -3.5px; border-radius:50% 50% 45% 45%; background:#3D472B; pointer-events:none; z-index:96; opacity:0; transition:opacity .3s"></div>
+
+  <div data-pana-rail="1" style="position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:45; display:flex; flex-direction:column; align-items:center; gap:12px; pointer-events:none; opacity:0; transition:opacity .5s ease">
+    <div style="display:flex; flex-direction:column-reverse; align-items:center; gap:4px">
+      <span data-pana-capa="1" style="width:54px; height:14px; border-radius:7px 7px 15px 15px; background:#E5C58C; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="2" style="width:58px; height:9px; border-radius:999px; background:#8FA073; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="3" style="width:50px; height:10px; border-radius:999px; background:#B5533A; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="4" style="width:52px; height:8px; border-radius:4px; background:#DDB157; display:block; opacity:0; transform:translateY(16px) scale(.86) rotate(-2deg); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="5" style="width:48px; height:11px; border-radius:9px; background:#C89A62; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="6" style="width:46px; height:8px; border-radius:999px; background:#6E8B4A; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+      <span data-pana-capa="7" style="width:56px; height:18px; border-radius:20px 20px 7px 7px; background:#EFD3A6; display:block; opacity:0; transform:translateY(16px) scale(.86); transition:opacity .45s ease, transform .5s cubic-bezier(.2,1.5,.35,1); box-shadow:0 3px 7px rgba(61,71,43,.18)"></span>
+    </div>
+    <span data-pana-hint="1" data-en="scroll ↓" style="font-family:ui-monospace, Menlo, monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8A8367; transition:opacity .4s ease">baja ↓</span>
+    <span data-pana-listo="1" data-en="ready" style="font-family:ui-monospace, Menlo, monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#C67139; opacity:0; margin-top:-22px; transition:opacity .4s ease">listo</span>
+  </div>
+
+  <sc-if value="{{ intro }}" hint-placeholder-val="{{ true }}">
+  <div data-pana-intro="1" onClick="{{ saltarIntro }}" style="position:fixed; inset:0; z-index:90; background:#FCF7EC; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; opacity:1; transition:opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1)">
+    <div style="position:relative; width:230px; height:180px; display:flex; align-items:flex-end; justify-content:center">
+      <div style="position:absolute; left:44px; bottom:128px; width:12px; height:12px; border-radius:50%; background:#FFFDF8; animation:panaVapor 1.9s ease-out .5s infinite"></div>
+      <div style="position:absolute; left:108px; bottom:138px; width:15px; height:15px; border-radius:50%; background:#FFFDF8; animation:panaVapor 2.1s ease-out .8s infinite"></div>
+      <div style="position:absolute; left:168px; bottom:128px; width:10px; height:10px; border-radius:50%; background:#FFFDF8; animation:panaVapor 1.7s ease-out 1.1s infinite"></div>
+      <img src="assets/img4.webp" alt="Miga" style="width:210px; height:auto; display:block; position:relative; z-index:2; animation:panaSube 1s cubic-bezier(.2,1.3,.35,1) both">
+      <div style="position:absolute; left:0; right:0; bottom:0; height:36px; border-radius:12px 12px 18px 18px; background:#3D472B; z-index:3"></div>
+      <div style="position:absolute; left:18px; right:18px; bottom:16px; height:10px; border-radius:5px; background:#C67139; z-index:4; animation:panaBrasa 1.6s ease-in-out infinite"></div>
+    </div>
+    <div style="display:flex; gap:3px; align-items:flex-end; font-family:Caprasimo, serif; font-size:clamp(58px, 12vw, 96px); line-height:1; color:#3D472B; margin-top:18px">
+      <span style="display:block; animation:panaLetra .8s cubic-bezier(.2,1.5,.35,1) .25s both">P</span>
+      <span style="display:block; animation:panaLetra .8s cubic-bezier(.2,1.5,.35,1) .37s both">A</span>
+      <span style="display:block; animation:panaLetra .8s cubic-bezier(.2,1.5,.35,1) .49s both">N</span>
+      <span style="display:block; animation:panaLetra .8s cubic-bezier(.2,1.5,.35,1) .61s both">A</span>
+    </div>
+    <div style="font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:#C67139; font-weight:700; margin-top:14px; animation:panaFade .6s ease-out 1s both">Studio</div>
+  </div>
+  </sc-if>
+
+  <div data-s="card" style="position:relative; z-index:50; background:#FFFEFA; border-bottom:1px solid #EBDFC7; padding:12px 22px; display:flex; gap:18px; align-items:center; justify-content:space-between">
+    <a href="#arriba" style="display:flex; align-items:center; gap:11px">
+      <img src="assets/img5.webp" alt="Pana Studio" data-pana-logo="1" style="height:34px; width:auto; display:block">
+    </a>
+    <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:flex-end">
+      <a href="#proyectos" data-en="Work" data-s="muted" style="color:#5E6B45; font-size:13.5px; font-weight:600; padding:8px 11px; border-radius:999px" style-hover="color:#C67139">Proyectos</a>
+      <a href="#servicios" data-en="Services" data-s="muted" style="color:#5E6B45; font-size:13.5px; font-weight:600; padding:8px 11px; border-radius:999px" style-hover="color:#C67139">Servicios</a>
+      <a href="#armar" data-en="Build yours" data-s="muted" style="color:#5E6B45; font-size:13.5px; font-weight:600; padding:8px 11px; border-radius:999px" style-hover="color:#C67139">Arma tu pana</a>
+      <a href="#proceso" data-en="How it works" data-s="muted" style="color:#5E6B45; font-size:13.5px; font-weight:600; padding:8px 11px; border-radius:999px" style-hover="color:#C67139">Proceso</a>
+      <button onClick="{{ toggleIdioma }}" data-s="line" style="border:1px solid #DDCEB2; background:transparent; color:#8A8367; padding:7px 11px; border-radius:999px; font-size:11.5px; font-weight:800; letter-spacing:.08em; cursor:pointer" style-hover="border-color:#C67139; color:#C67139">{{ idiomaLabel }}</button>
+      <a href="{{ waHola }}" target="_blank" data-en="WhatsApp us" style="background:#3D472B; color:#F5EAD8; padding:10px 17px; border-radius:999px; font-size:13.5px; font-weight:700" style-hover="background:#C67139; color:#FFF8EE">Escríbenos</a>
+    </div>
+  </div>
+
+  <section id="arriba" data-screen-label="Inicio" style="position:relative; z-index:1; position:relative; padding:clamp(48px, 8vw, 96px) 22px clamp(40px, 6vw, 74px); max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:clamp(28px, 5vw, 60px); align-items:center">
+    <div>
+      <div data-en="Design and development, made by panas · LATAM and beyond" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#C67139; font-weight:700">Diseño y desarrollo hecho por panas · LATAM y donde sea</div>
+      <h1 data-en="What nobody knows about is hardly ever chosen." data-s="ink" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(40px, 6.4vw, 78px); line-height:1.03; margin:18px 0 0; text-wrap:pretty">Lo que no se conoce, difícilmente se elige.</h1>
+      <p data-en="Our team is ready to get you known. On your project from day one, and you get a website that explains what you sell, a price and a date in writing, and someone who actually answers." data-s="muted" style="font-size:clamp(16px, 1.5vw, 19px); line-height:1.6; color:#5E6B45; margin:20px 0 0; max-width:560px; text-wrap:pretty">Nuestro equipo está listo para darte a conocer. Activos por tu proyecto y tienes una web que explica lo que vendes, un precio y una fecha por escrito, y alguien que sí te contesta.</p>
+      <div data-en="Let's talk, pana!" data-s="ink" style="font-family:Caprasimo, serif; font-size:clamp(24px, 2.6vw, 34px); line-height:1.15; margin:22px 0 0; color:#C67139">¡Hablemos mi pana!</div>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:30px">
+        <a href="{{ waHola }}" target="_blank" data-en="Write on WhatsApp" style="background:#C67139; color:#FFF8EE; padding:15px 26px; border-radius:14px; font-size:15.5px; font-weight:800" style-hover="background:#3D472B; color:#F5EAD8">Escríbenos por WhatsApp</a>
+        <a href="https://cal.com/pana-studio-ms1ou7/primeras-migas?overlayCalendar=true" target="_blank" data-en="Book 30 minutes" data-s="line" style="border:1px solid #3D472B; color:#3D472B; padding:15px 24px; border-radius:14px; font-size:15.5px; font-weight:700" style-hover="background:#F6A06B; border-color:#F6A06B; color:#3D472B">Agendar 30 minutos</a>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:28px">
+        <span data-en="Price and deadline in writing" data-s="line" style="border:1px solid #DDCEB2; border-radius:999px; padding:8px 14px; font-size:12.5px; color:#5E6B45; font-weight:600">Precio y plazo por escrito</span>
+        <span data-en="We work remote, all over LATAM" data-s="line" style="border:1px solid #DDCEB2; border-radius:999px; padding:8px 14px; font-size:12.5px; color:#5E6B45; font-weight:600">Trabajamos remoto, en toda LATAM</span>
+        <span data-en="Spanish and English" data-s="line" style="border:1px solid #DDCEB2; border-radius:999px; padding:8px 14px; font-size:12.5px; color:#5E6B45; font-weight:600">Español e inglés</span>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center; position:relative; min-height:300px; align-items:center">
+      <div style="position:absolute; width:min(420px, 78vw); aspect-ratio:1; border-radius:50%; background:#F6A06B; opacity:.28"></div>
+      <div data-pana-miga="1" style="position:relative; width:min(430px, 82vw); animation:panaFlota 6s ease-in-out infinite; will-change:transform">
+        <img src="assets/img4.webp" alt="Miga, la mascota de Pana Studio" style="width:100%; height:auto; display:block; filter:drop-shadow(0 26px 34px rgba(61,71,43,.24))">
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" data-screen-label="Proyectos" data-s="soft" style="position:relative; z-index:1; background:#F7EDDC; padding:clamp(52px, 7vw, 88px) 22px">
+    <div style="max-width:1240px; margin:0 auto">
+      <div style="display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between">
+        <div>
+          <div data-en="Work" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#C67139; font-weight:700">Proyectos</div>
+          <h2 data-en="What we have taken out of the oven" data-s="ink" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.08; margin:12px 0 0">Lo que ha salido del horno</h2>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px; margin-top:26px">
+        <sc-for list="{{ proyectos }}" as="p" hint-placeholder-count="5">
+          <article data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:24px; overflow:hidden; display:flex; flex-direction:column; transition:transform .22s ease, box-shadow .22s ease" style-hover="transform:translateY(-6px); box-shadow:0 22px 40px rgba(61,71,43,.16)">
+            <div style="height:210px; position:relative; overflow:hidden; background-color:{{ p.fondo }}; background-image:repeating-linear-gradient(135deg, rgba(255,253,248,.55) 0 9px, rgba(255,253,248,0) 9px 20px)">
+              <sc-if value="{{ p.tieneImg }}" hint-placeholder-val="{{ false }}">
+                <span data-pana-img="{{ p.img }}" data-pana-fit="{{ p.ajuste }}" style="position:absolute; inset:0; display:block; background-repeat:no-repeat; background-position:center"></span>
+              </sc-if>
+              <sc-if value="{{ p.sinImg }}" hint-placeholder-val="{{ true }}">
+                <span style="position:absolute; left:16px; bottom:14px; font-family:ui-monospace, Menlo, monospace; font-size:11.5px; letter-spacing:.04em; color:#3D472B; background:#FFFDF8; border-radius:8px; padding:5px 9px">{{ p.slot }}</span>
+              </sc-if>
+              <span style="position:absolute; right:14px; top:14px; background:#3D472B; color:#F5EAD8; font-size:11.5px; font-weight:700; border-radius:999px; padding:6px 11px">{{ p.ano }}</span>
+            </div>
+            <div style="padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px; flex:1">
+              <div data-s="ink" style="font-family:Caprasimo, serif; font-size:24px; line-height:1.1">{{ p.titulo }}</div>
+              <div style="font-size:13px; font-weight:700; color:#C67139">{{ p.tipo }}</div>
+              <div data-s="muted" style="font-size:13.5px; color:#5E6B45; line-height:1.55; flex:1">{{ p.nota }}</div>
+              <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; margin-top:6px">
+                <span data-s="muted" style="font-size:12.5px; color:#8A8367">{{ p.lugar }}</span>
+                <span style="display:flex; gap:10px; align-items:center">
+                  <sc-if value="{{ p.tieneLink }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ p.link }}" target="_blank" data-en="Open it" style="display:inline-flex; align-items:center; gap:8px; background:#F1DFBE; border:1px solid #E0C79A; color:#3D472B; text-decoration:none; padding:9px 16px 10px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; font-size:12.5px; font-weight:800; box-shadow:0 4px 10px rgba(61,71,43,.14); transition:transform .18s ease, background .18s ease" style-hover="transform:translateY(-3px); background:#F6A06B">Verlo</a>
+                  </sc-if>
+                </span>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" data-screen-label="Servicios" style="position:relative; z-index:1; padding:clamp(52px, 7vw, 88px) 22px; max-width:1240px; margin:0 auto">
+    <div style="display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; justify-content:space-between">
+      <div>
+        <div data-en="Services" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#C67139; font-weight:700">Servicios</div>
+        <h2 data-en="What we do, and what it costs" data-s="ink" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.08; margin:12px 0 0">Qué hacemos y desde cuánto</h2>
+        <p data-en="Prices in Colombian pesos so you get an idea. The final number depends on the size of the project, and you get it in writing before we start." data-s="muted" style="font-size:16px; line-height:1.6; color:#5E6B45; margin:14px 0 0; max-width:620px">Te dejamos los precios en pesos colombianos para que te hagas una idea. El número final depende del tamaño del proyecto, y te lo pasamos por escrito antes de arrancar.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px; margin-top:30px">
+      <sc-for list="{{ servicios }}" as="s" hint-placeholder-count="7">
+          <div data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:20px; padding:22px 22px 24px; display:flex; flex-direction:column; gap:9px" style-hover="border-color:#C67139">
+            <sc-if value="{{ s.destacado }}" hint-placeholder-val="{{ false }}">
+              <span style="display:flex; align-items:center; gap:8px; align-self:flex-start; background:#F7EDDC; border-radius:999px; padding:6px 12px 6px 9px; margin-bottom:2px">
+                <span style="display:flex; gap:3px; align-items:center">
+                  <span style="width:11px; height:11px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+                  <span style="width:11px; height:11px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+                  <span style="width:11px; height:11px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+                </span>
+                <span data-en="Most ordered" style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#C67139; font-weight:800">Más pedido</span>
+              </span>
+            </sc-if>
+            <div data-s="ink" style="font-family:Caprasimo, serif; font-size:21px; line-height:1.15">{{ s.nombre }}</div>
+            <div data-s="muted" style="font-size:13.5px; color:#5E6B45; line-height:1.55; flex:1">{{ s.desc }}</div>
+            <div style="display:flex; gap:12px; align-items:baseline; justify-content:space-between; margin-top:6px; border-top:1px solid #EDE2CC; padding-top:12px">
+              <span style="font-size:15px; font-weight:800; color:#C67139; font-variant-numeric:tabular-nums">{{ s.precio }}</span>
+              <span data-s="muted" style="font-size:12.5px; color:#8A8367">{{ s.plazo }}</span>
+            </div>
+          </div>
+
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="armar" data-screen-label="Arma tu pana" data-s="dark" style="position:relative; z-index:1; background:#3D472B; color:#F5EAD8; padding:clamp(52px, 7vw, 88px) 22px; overflow:hidden">
+    <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; opacity:.5; background-image:radial-gradient(rgba(246,160,107,.22) 1px, transparent 1px); background-size:26px 26px; animation:panaPuntos 30s linear infinite"></div>
+    <div style="max-width:1240px; margin:0 auto; position:relative">
+      <div data-en="Build yours" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#F6A06B; font-weight:700">Arma tu pana</div>
+      <h2 data-en="Put what you need in the oven" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.08; margin:12px 0 0">Mete al horno lo que necesitas</h2>
+      <p data-en="Drag the breads into the oven and we add up the starting price, ready to send on WhatsApp. On a phone, just tap." style="font-size:16px; line-height:1.6; color:#C9D3B4; margin:14px 0 0; max-width:600px">Arrastra los panes al horno y te sumamos el desde, listo para mandarnos por WhatsApp. Si estás en el celular, toca nomás.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; margin-top:32px; align-items:start">
+        <div>
+          <div data-en="On the counter" style="font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:#A9B58F; font-weight:700; margin-bottom:14px">En el mostrador</div>
+          <div style="display:flex; flex-wrap:wrap; gap:14px">
+            <sc-for list="{{ ingredientes }}" as="i" hint-placeholder-count="7">
+              <button draggable="true" data-id="{{ i.id }}" data-pana-bread="{{ i.forma }}" onDragStart="{{ arrastrar }}" onClick="{{ agregarCapa }}" style="flex:0 1 190px; border:none; background:#F1DFBE; color:#3D472B; border-radius:24px; padding:20px 22px; cursor:grab; text-align:left; display:flex; flex-direction:column; gap:5px; transition:transform .2s ease, box-shadow .2s ease; box-shadow:0 8px 18px rgba(0,0,0,.22)" style-hover="transform:translateY(-5px); box-shadow:0 16px 26px rgba(0,0,0,.3)">
+                <span style="font-size:14px; font-weight:800; line-height:1.25">{{ i.nombre }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div onDrop="{{ soltarCapa }}" onDragOver="{{ permitirDrop }}" style="border-radius:30px; background:#2A331E; border:7px solid #55603F; padding:16px; box-shadow:0 26px 50px rgba(0,0,0,.32)">
+          <div style="display:flex; align-items:center; gap:12px; padding:2px 6px 14px">
+            <span style="width:16px; height:16px; border-radius:50%; background:#C67139; display:block"></span>
+            <span style="width:16px; height:16px; border-radius:50%; background:#8FA073; display:block"></span>
+            <span style="width:16px; height:16px; border-radius:50%; background:#55603F; display:block"></span>
+            <span data-en="Pana oven · 220°" style="margin-left:auto; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#A9B58F; font-weight:700">Horno Pana · 220°</span>
+          </div>
+
+          <div style="position:relative; border-radius:22px; background:#141A0B; border:4px solid #6F7A5A; min-height:250px; padding:16px; display:flex; flex-direction:column; gap:10px; overflow:hidden">
+            <div aria-hidden="true" style="position:absolute; left:0; right:0; bottom:0; height:110px; background:radial-gradient(ellipse at 50% 120%, rgba(198,113,57,.55), rgba(198,113,57,0) 70%); animation:panaBrasa 3.2s ease-in-out infinite; pointer-events:none"></div>
+            <sc-if value="{{ platoVacio }}" hint-placeholder-val="{{ true }}">
+              <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; position:relative">
+                <img src="assets/img4.webp" alt="" style="width:118px; height:auto; opacity:.45">
+                <span data-en="Empty oven. Put something in." style="font-size:13.5px; color:#A9B58F">Horno vacío. Métele algo.</span>
+              </div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:9px; position:relative">
+              <sc-for list="{{ plato }}" as="c" hint-placeholder-count="0">
+                <button data-id="{{ c.id }}" onClick="{{ quitarCapa }}" style="border:none; background:#F1DFBE; color:#3D472B; border-radius:999px 999px 16px 16px; padding:14px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between; cursor:pointer; text-align:left; font-size:14px; font-weight:800; box-shadow:0 6px 14px rgba(0,0,0,.28)" style-hover="background:#F6A06B">
+                  {{ c.nombre }}
+                  <span data-en="remove" style="font-size:11px; font-weight:700; color:#8A8367; letter-spacing:.08em; text-transform:uppercase">quitar</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:14px; padding:14px 6px 4px">
+            <span style="flex:1; height:12px; border-radius:999px; background:#C67139; display:block"></span>
+            <span style="width:54px; height:12px; border-radius:999px; background:#55603F; display:block"></span>
+          </div>
+
+          <sc-if value="{{ platoLleno }}" hint-placeholder-val="{{ false }}">
+            <div style="border-top:1px solid #55603F; padding-top:16px; margin-top:6px; display:flex; flex-direction:column; gap:12px">
+              <div style="display:flex; gap:12px; align-items:baseline; justify-content:space-between">
+                <span data-en="From" style="font-size:13px; color:#C9D3B4; font-weight:600">Desde</span>
+                <span style="font-family:Caprasimo, serif; font-size:30px; color:#F6A06B; font-variant-numeric:tabular-nums">{{ totalPlato }}</span>
+              </div>
+              <div style="font-size:12.5px; color:#C9D3B4">{{ mensualPlato }}</div>
+              <a href="{{ waPlato }}" target="_blank" data-en="Send this on WhatsApp" style="background:#C67139; color:#FFF8EE; padding:14px 20px; border-radius:13px; font-size:14.5px; font-weight:800; text-align:center" style-hover="background:#F6A06B; color:#3D472B">Mandar esto por WhatsApp</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" data-screen-label="Proceso" style="position:relative; z-index:1; padding:clamp(52px, 7vw, 88px) 22px; max-width:1240px; margin:0 auto">
+    <div data-en="How it works" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#C67139; font-weight:700">Cómo funciona</div>
+    <h2 data-en="Getting a quote with us, in four steps" data-s="ink" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.08; margin:12px 0 0">Cotizar con nosotros, en cuatro pasos</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-top:30px">
+      <div data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:20px; padding:22px">
+        <div style="font-family:Caprasimo, serif; font-size:15px; color:#FFF8EE; background:#6B7F4E; width:38px; height:38px; border-radius:50% 50% 42% 42% / 58% 58% 42% 42%; display:flex; align-items:center; justify-content:center">01</div>
+        <div data-en="You write to us" data-s="ink" style="font-family:Caprasimo, serif; font-size:23px; margin-top:14px">Nos escribes</div>
+        <p data-en="On WhatsApp or in a 30-minute call: what you sell, who buys it, and what is getting in the way." data-s="muted" style="font-size:14px; line-height:1.6; color:#5E6B45; margin:8px 0 0">Por WhatsApp o en una llamada de 30 minutos: qué vendes, quién te compra y qué te está estorbando.</p>
+      </div>
+      <div data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:20px; padding:22px">
+        <div style="font-family:Caprasimo, serif; font-size:15px; color:#3D472B; background:#F6A06B; width:38px; height:38px; border-radius:50% 50% 42% 42% / 58% 58% 42% 42%; display:flex; align-items:center; justify-content:center">02</div>
+        <div data-en="We send the quote" data-s="ink" style="font-family:Caprasimo, serif; font-size:23px; margin-top:14px">Te cotizamos</div>
+        <p data-en="In writing: what we would do, what it costs and when it would be ready. If something is not worth it for you, we say so." data-s="muted" style="font-size:14px; line-height:1.6; color:#5E6B45; margin:8px 0 0">Por escrito: qué haríamos, cuánto vale y cuándo estaría listo. Si algo no te conviene, te lo decimos.</p>
+      </div>
+      <div data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:20px; padding:22px">
+        <div style="font-family:Caprasimo, serif; font-size:15px; color:#F5EAD8; background:#8FA073; width:38px; height:38px; border-radius:50% 50% 42% 42% / 58% 58% 42% 42%; display:flex; align-items:center; justify-content:center">03</div>
+        <div data-en="We build it" data-s="ink" style="font-family:Caprasimo, serif; font-size:23px; margin-top:14px">Lo hacemos</div>
+        <p data-en="We design and build it, and you get a link to check the progress whenever you want." data-s="muted" style="font-size:14px; line-height:1.6; color:#5E6B45; margin:8px 0 0">Diseñamos y programamos, y te damos un link para ver los avances cuando quieras.</p>
+      </div>
+      <div data-s="card" style="background:#FFFDF8; border:1px solid #E4D6BC; border-radius:20px; padding:22px">
+        <div style="font-family:Caprasimo, serif; font-size:15px; color:#F5EAD8; background:#3D472B; width:38px; height:38px; border-radius:50% 50% 42% 42% / 58% 58% 42% 42%; display:flex; align-items:center; justify-content:center">04</div>
+        <div data-en="It is yours" data-s="ink" style="font-family:Caprasimo, serif; font-size:23px; margin-top:14px">Queda tuyo</div>
+        <p data-en="We hand it over, show you how to run it, and stay around for the small monthly changes." data-s="muted" style="font-size:14px; line-height:1.6; color:#5E6B45; margin:8px 0 0">Te lo entregamos, te enseñamos a manejarlo y quedamos pendientes de los cambios del mes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Testimonios" data-s="soft" style="position:relative; z-index:1; background:#F7EDDC; padding:clamp(52px, 7vw, 88px) 22px">
+    <div style="max-width:1240px; margin:0 auto">
+      <div data-en="Clients" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#C67139; font-weight:700">Clientes</div>
+      <h2 data-en="What they say" data-s="ink" style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.08; margin:12px 0 0">Lo que dicen</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:28px">
+        <blockquote data-s="card" style="margin:0; background:#FFFDF8; border:1px solid #E4D6BC; border-radius:22px; padding:24px; display:flex; flex-direction:column; gap:16px">
+          <span style="display:flex; align-items:center; gap:9px">
+            <span style="display:flex; gap:4px">
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+            </span>
+            <span data-s="muted" style="font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:#8A8367; font-weight:700">5 de 5</span>
+          </span>
+          <span data-s="ink" data-en="&quot;The rebranding brought our brand back to life. It did not just improve our visual identity, it also helped us explain much better who we are and present our work in a far more professional way. The new portfolio really reflects the level of our projects.&quot;" style="font-size:17px; line-height:1.55; font-weight:600; text-wrap:pretty">“El rebranding logró darle una nueva vida a nuestra marca. No solo mejoró nuestra identidad visual, también nos ayudó a comunicar mucho mejor quiénes somos y a presentar nuestro trabajo de una manera mucho más profesional. El nuevo portafolio refleja realmente el nivel de nuestros proyectos.”</span>
+          <span style="display:flex; align-items:center; gap:12px; margin-top:auto">
+            <img src="assets/testimonio-1.png" alt="" style="width:52px; height:52px; border-radius:50%; object-fit:cover; display:block; flex:none">
+            <span data-s="muted" style="font-size:13px; color:#8A8367; line-height:1.4">Liliana · Barichara Travel</span>
+          </span>
+        </blockquote>
+        <blockquote data-s="card" style="margin:0; background:#FFFDF8; border:1px solid #E4D6BC; border-radius:22px; padding:24px; display:flex; flex-direction:column; gap:16px">
+          <span style="display:flex; align-items:center; gap:9px">
+            <span style="display:flex; gap:4px">
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+            </span>
+            <span data-s="muted" style="font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:#8A8367; font-weight:700">5 de 5</span>
+          </span>
+          <span data-s="ink" data-en="&quot;We needed a site that really represented our business, not just a pretty page. The result went beyond what we expected: our digital presence is far more professional, clearer and easier to navigate. Our clients understand what we do from the very first moment.&quot;" style="font-size:17px; line-height:1.55; font-weight:600; text-wrap:pretty">“Necesitábamos una página que realmente representara nuestro negocio y no solo una página bonita. El resultado superó nuestras expectativas: ahora tenemos una presencia digital mucho más profesional, clara y fácil de navegar. Nuestros clientes entienden mejor lo que hacemos desde el primer momento.”</span>
+          <span style="display:flex; align-items:center; gap:12px; margin-top:auto">
+            <img src="assets/testimonio-2.png" alt="" style="width:52px; height:52px; border-radius:50%; object-fit:cover; display:block; flex:none">
+            <span data-s="muted" style="font-size:13px; color:#8A8367; line-height:1.4">Carlos Díaz · Atelier Romance</span>
+          </span>
+        </blockquote>
+        <blockquote data-s="card" style="margin:0; background:#FFFDF8; border:1px solid #E4D6BC; border-radius:22px; padding:24px; display:flex; flex-direction:column; gap:16px">
+          <span style="display:flex; align-items:center; gap:9px">
+            <span style="display:flex; gap:4px">
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+              <span style="width:14px; height:14px; border-radius:50% 50% 40% 40% / 62% 62% 38% 38%; background:#C67139; display:block"></span>
+            </span>
+            <span data-s="muted" style="font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:#8A8367; font-weight:700">5 de 5</span>
+          </span>
+          <span data-s="ink" data-en="&quot;The software let us organise processes we used to handle manually and all over the place. The information is centralised now, following up is much easier and we save time on admin work. It was a solution really thought out for what our business needs.&quot;" style="font-size:17px; line-height:1.55; font-weight:600; text-wrap:pretty">“El software nos permitió organizar procesos que antes manejábamos de forma manual y dispersa. Ahora tenemos la información centralizada, podemos hacer seguimiento mucho más fácilmente y ahorramos tiempo en tareas administrativas. Fue una solución pensada realmente para las necesidades de nuestro negocio.”</span>
+          <span style="display:flex; align-items:center; gap:12px; margin-top:auto">
+            <img src="assets/testimonio-3.png" alt="" style="width:52px; height:52px; border-radius:50%; object-fit:cover; object-position:center top; display:block; flex:none">
+            <span data-s="muted" style="font-size:13px; color:#8A8367; line-height:1.4">Felipe Hernández · Kuaizi Group</span>
+          </span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" data-screen-label="Contacto" data-s="dark" style="position:relative; z-index:1; background:#3D472B; color:#F5EAD8; padding:clamp(52px, 7vw, 92px) 22px">
+    <div style="max-width:1240px; margin:0 auto">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:28px; align-items:center">
+        <div>
+          <div data-en="Contact" style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:#F6A06B; font-weight:700">Contacto</div>
+          <h2 data-en="Write to us and tell us about your business. We answer with a price and a date." style="font-family:Caprasimo, serif; font-weight:400; font-size:clamp(32px, 4.4vw, 54px); line-height:1.06; margin:12px 0 0; max-width:640px; text-wrap:pretty">Escríbenos y cuéntanos tu negocio. Te respondemos con precio y fecha.</h2>
+        </div>
+        <div style="display:flex; justify-content:center">
+          <div data-pana-miga="1" style="width:min(300px, 62vw); animation:panaFlota 7s ease-in-out infinite; will-change:transform">
+            <img src="assets/img4.webp" alt="" style="width:100%; height:auto; display:block; filter:drop-shadow(0 24px 30px rgba(0,0,0,.3))">
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:26px; margin-top:36px; align-items:flex-start">
+        <a href="{{ waHola }}" target="_blank" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none">
+          <span style="width:76px; height:76px; border-radius:50% 50% 44% 44% / 58% 58% 42% 42%; border:1px solid #6F7A5A; background:#354028; color:#F5EAD8; display:flex; align-items:center; justify-content:center; font-family:Caprasimo, serif; font-size:23px; transition:transform .2s ease, background .2s ease" style-hover="background:#C67139; color:#FFF8EE; transform:translateY(-5px)">WA</span>
+          <span data-en="WhatsApp" style="font-size:12px; font-weight:700; color:#C9D3B4; letter-spacing:.04em">WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/panastudio.col" target="_blank" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none">
+          <span style="width:76px; height:76px; border-radius:50% 50% 44% 44% / 58% 58% 42% 42%; border:1px solid #6F7A5A; background:#354028; color:#F5EAD8; display:flex; align-items:center; justify-content:center; font-family:Caprasimo, serif; font-size:23px; transition:transform .2s ease, background .2s ease" style-hover="background:#C67139; color:#FFF8EE; transform:translateY(-5px)">IG</span>
+          <span data-en="@panastudio.col" style="font-size:12px; font-weight:700; color:#C9D3B4; letter-spacing:.04em">@panastudio.col</span>
+        </a>
+        <a href="mailto:pana.studiocol@gmail.com" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none">
+          <span style="width:76px; height:76px; border-radius:50% 50% 44% 44% / 58% 58% 42% 42%; border:1px solid #6F7A5A; background:#354028; color:#F5EAD8; display:flex; align-items:center; justify-content:center; font-family:Caprasimo, serif; font-size:23px; transition:transform .2s ease, background .2s ease" style-hover="background:#C67139; color:#FFF8EE; transform:translateY(-5px)">@</span>
+          <span data-en="Email" style="font-size:12px; font-weight:700; color:#C9D3B4; letter-spacing:.04em">Correo</span>
+        </a>
+        <a href="https://linktr.ee/pana.studiocol" target="_blank" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none">
+          <span style="width:76px; height:76px; border-radius:50% 50% 44% 44% / 58% 58% 42% 42%; border:1px solid #6F7A5A; background:#354028; color:#F5EAD8; display:flex; align-items:center; justify-content:center; font-family:Caprasimo, serif; font-size:23px; transition:transform .2s ease, background .2s ease" style-hover="background:#C67139; color:#FFF8EE; transform:translateY(-5px)">LK</span>
+          <span data-en="Linktree" style="font-size:12px; font-weight:700; color:#C9D3B4; letter-spacing:.04em">Linktree</span>
+        </a>
+      </div>
+
+      <a href="https://cal.com/pana-studio-ms1ou7/primeras-migas?overlayCalendar=true" target="_blank" style="display:flex; flex-wrap:wrap; gap:10px 20px; align-items:center; justify-content:space-between; margin-top:34px; background:#C67139; color:#FFF8EE; padding:26px 28px; border-radius:20px" style-hover="background:#F6A06B; color:#3D472B">
+        <span style="display:flex; flex-direction:column; gap:5px">
+          <span data-en="Book a 30-minute call" style="font-family:Caprasimo, serif; font-size:clamp(24px, 2.6vw, 32px); line-height:1.1">Agendar una llamada de 30 minutos</span>
+          <span data-en="Primeras migas · pick a slot on the calendar" style="font-size:14px; font-weight:600; opacity:.9">Primeras migas · eliges la hora en el calendario</span>
+        </span>
+        <span style="font-family:Caprasimo, serif; font-size:30px; line-height:1">→</span>
+      </a>
+
+      <div data-en="Remote across LATAM · Spanish and English" style="font-size:12.5px; color:#C9D3B4; margin-top:18px">Remoto en toda LATAM · español e inglés</div>
+    </div>
+  </section>
+
+  <footer data-s="card" style="position:relative; z-index:1; background:#FFFEFA; border-top:1px solid #EBDFC7; padding:26px 22px; display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between">
+    <img src="assets/img5.webp" alt="Pana Studio" data-pana-logo="1" style="height:28px; width:auto; display:block">
+    <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center">
+      <a href="https://www.instagram.com/panastudio.col" target="_blank" style="font-size:13px; font-weight:700">Instagram</a>
+      <a href="https://linktr.ee/pana.studiocol" target="_blank" style="font-size:13px; font-weight:700">Linktree</a>
+      <a href="{{ waHola }}" target="_blank" style="font-size:13px; font-weight:700">WhatsApp</a>
+      <a href="mailto:pana.studiocol@gmail.com" style="font-size:13px; font-weight:700">Correo</a>
+      <span data-en="Design and development studio · LATAM" data-s="muted" style="font-size:12.5px; color:#8A8367">Estudio de diseño y desarrollo · LATAM</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const WA_LINK = "https://wa.link/gjcoi7";
+const COP = n => "$" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+const SERV = [
+  { id:"landing", destacado:true, nombre:"Landing de una página", nombreEn:"One-page landing", desc:"Una página que carga rápido, se ve bien en celular y termina en WhatsApp o reserva.", descEn:"One page that loads fast, looks right on a phone and ends in WhatsApp or a booking.", min:1200000, mensual:0, plazo:"2 semanas", plazoEn:"2 weeks" },
+  { id:"web", destacado:true, nombre:"Web de 4 a 6 páginas", nombreEn:"4 to 6 page website", desc:"Sitio completo, autoadministrable, con lo que el negocio ya vende bien puesto arriba.", descEn:"A full site you can edit yourself, with whatever already sells best up top.", min:2500000, mensual:0, plazo:"4 a 6 semanas", plazoEn:"4 to 6 weeks" },
+  { id:"reservas", nombre:"Reservas y disponibilidad", nombreEn:"Bookings and availability", desc:"Calendario, cupos y pago en línea. Menos mensajes de \"¿tienen para este fin de semana?\".", descEn:"Calendar, slots and online payment. Fewer \"do you have room this weekend?\" messages.", min:3000000, mensual:150000, plazo:"5 a 7 semanas", plazoEn:"5 to 7 weeks" },
+  { id:"ecommerce", nombre:"Tienda online", nombreEn:"Online store", desc:"Catálogo, carrito, pasarela y envíos. Inventario que no se pelea con el del local.", descEn:"Catalogue, cart, payments and shipping. Stock that agrees with the store's own.", min:3500000, mensual:200000, plazo:"6 a 8 semanas", plazoEn:"6 to 8 weeks" },
+  { id:"identidad", nombre:"Identidad de marca", nombreEn:"Brand identity", desc:"Logo, paleta, tipografías y plantillas listas para Instagram y para imprimir.", descEn:"Logo, palette, type and templates ready for Instagram and for print.", min:2500000, mensual:0, plazo:"3 a 4 semanas", plazoEn:"3 to 4 weeks" },
+  { id:"autowa", nombre:"Automatización de WhatsApp con IA", nombreEn:"WhatsApp automation with AI", desc:"Responde precios, horarios y disponibilidad a toda hora. Pasa a una persona cuando toca.", descEn:"Answers prices, hours and availability around the clock. Hands over to a person when it should.", min:1500000, mensual:150000, plazo:"3 semanas", plazoEn:"3 weeks" },
+  { id:"soporte", nombre:"Mantenimiento y soporte", nombreEn:"Maintenance and support", desc:"Actualizaciones, respaldos y cambios chicos del mes. Sin cobrar por cada ajuste.", descEn:"Updates, backups and the small monthly changes. No charge per tweak.", min:0, mensual:300000, plazo:"mensual", plazoEn:"monthly" }
+];
+
+const BASE = [
+  { id:"b1", titulo:"Barichara Travel", tipo:"Web", tipoEn:"Website", lugar:"Barichara, Colombia", ano:"2025", nota:"El viajero entiende los planes de una y escribe sin tener que preguntar tres veces.", notaEn:"Travellers get the plans right away and write in without asking three times.", fondo:"#F6A06B", img:"assets/barichara-travel.png", link:"" },
+  { id:"b2", titulo:"Atelier Romance", tipo:"Web", tipoEn:"Website", lugar:"Colombia", ano:"2025", nota:"Web de bodas donde el trabajo se ve grande y contactarlos queda a un toque.", notaEn:"A wedding site where the work looks big and getting in touch is one tap away.", fondo:"#8FA073", img:"assets/atelier-romance.png", link:"https://atelieromance.github.io/atelieromace.bybaricharatravel/index.html" },
+  { id:"b3", titulo:"Kuaizi Group", tipo:"Web y portafolio", tipoEn:"Website and portfolio", lugar:"LATAM · China", ano:"2025", nota:"Sitio y portafolio para presentarse ante clientes de importación sin tener que explicar tanto.", notaEn:"Site and portfolio to introduce themselves to import clients without explaining so much.", fondo:"#C67139", img:"assets/kuaizi-group.png", link:"https://kuaizigroup.com/" },
+  { id:"b4", titulo:"App Boda", tipo:"App para los invitados", tipoEn:"App for the guests", lugar:"Colombia", ano:"2025", nota:"La invitación vive en el celular: se toca el sello y ahí está toda la boda.", notaEn:"The invitation lives on the phone: tap the seal and the whole wedding is there.", fondo:"#3D472B", img:"assets/app-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/base-app/" },
+  { id:"b6", titulo:"Landing Boda", tipo:"Landing de una página", tipoEn:"One-page landing", lugar:"Colombia", ano:"2025", nota:"Una historia que se abre como un libro y termina en la confirmación de los invitados.", notaEn:"A story that opens like a book and ends with the guests confirming.", fondo:"#2A2340", img:"assets/landing-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/appcuento/" },
+  { id:"b7", titulo:"Portafolios", tipo:"Portafolio interactivo", tipoEn:"Interactive portfolio", lugar:"San Gil, Santander", ano:"2026", nota:"Portafolio de fotografía que se abre como un obturador y deja el trabajo al frente.", notaEn:"A photography portfolio that opens like a shutter and puts the work up front.", fondo:"#1A1119", img:"assets/portafolios.png", link:"https://yoshdealba.github.io/Portafolio/" },
+];
+
+const FORMAS = [
+  ["50% 50% 42% 42% / 62% 62% 40% 40%", "#F1DFBE"],
+  ["26px 26px 14px 14px / 46% 46% 16% 16%", "#EFD3A6"],
+  ["999px", "#F6A06B"],
+  ["30% 70% 68% 32% / 34% 34% 66% 66%", "#F1DFBE"],
+  ["46% 54% 50% 50% / 56% 56% 44% 44%", "#EFD3A6"],
+  ["18px 18px 40% 40% / 18px 18px 60% 60%", "#F6A06B"],
+  ["999px 999px 22px 22px", "#F1DFBE"]
+];
+
+class Component extends DCLogic {
+  state = {
+    intro: true, lang: "es",
+    plato: []
+  };
+
+  componentDidMount() {
+    try {
+      const l = localStorage.getItem("pana-web-idioma");
+      if (l) this.setState({ lang: l });
+    } catch (e) {}
+
+    this.timer = setTimeout(() => this.cerrarIntro(), 2500);
+
+    this.fino = window.matchMedia("(pointer: fine)").matches;
+    this.pos = { x: -100, y: -100 };
+    this.suave = { x: -100, y: -100 };
+    this.onMove = e => {
+      this.pos.x = e.clientX; this.pos.y = e.clientY;
+      const cr = this.$("[data-pana-crumb]");
+      if (cr) { cr.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)"; cr.style.opacity = this.fino ? "1" : "0"; }
+      document.querySelectorAll("[data-pana-miga]").forEach(el => {
+        const r = el.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) / Math.max(r.width, 1);
+        const dy = (e.clientY - (r.top + r.height / 2)) / Math.max(r.height, 1);
+        const cx = Math.max(-1.4, Math.min(1.4, dx));
+        const cy = Math.max(-1.4, Math.min(1.4, dy));
+        el.style.setProperty("--x", cx);
+        el.firstElementChild.style.transform =
+          "translate(" + (cx * 16).toFixed(1) + "px," + (cy * 12).toFixed(1) + "px) rotate(" + (cx * 5).toFixed(1) + "deg) scale(" + (1 + Math.abs(cy) * 0.02).toFixed(3) + ")";
+        el.firstElementChild.style.transition = "transform .25s ease-out";
+      });
+    };
+    window.addEventListener("pointermove", this.onMove, { passive: true });
+
+    const loop = () => {
+      const ring = this.$("[data-pana-cursor]");
+      if (ring && this.fino) {
+        this.suave.x += (this.pos.x - this.suave.x) * 0.16;
+        this.suave.y += (this.pos.y - this.suave.y) * 0.16;
+        ring.style.transform = "translate(" + this.suave.x.toFixed(1) + "px," + this.suave.y.toFixed(1) + "px)";
+        ring.style.opacity = "0.85";
+      }
+      this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+
+    this.capas = Array.prototype.slice.call(document.querySelectorAll("[data-pana-capa]"));
+    this.rail = this.$("[data-pana-rail]");
+    const SECCIONES = ["#arriba", "#proyectos", "#servicios", "#armar", "#proceso", '[data-screen-label="Testimonios"]', "#contacto"];
+    this.sandwich = () => {
+      if (!this.rail) return;
+      const ancho = window.innerWidth;
+      const r = this.rail.style;
+      if (ancho < 760) { r.opacity = "0"; document.body.style.paddingRight = ""; return; }
+      const canaleta = (ancho - 1240) / 2;
+      const reservar = canaleta < 76;
+      document.body.style.paddingRight = reservar ? "76px" : "";
+      r.top = "50%";
+      r.bottom = "auto";
+      r.right = reservar ? "12px" : Math.max(12, (canaleta - 58) / 2) + "px";
+      r.transform = "translateY(-50%)";
+      r.background = "transparent";
+      r.border = "0";
+      r.padding = "0";
+      r.boxShadow = "none";
+      r.opacity = "1";
+
+      const limite = window.innerHeight * 0.62;
+      let paso = 0;
+      SECCIONES.forEach(sel => {
+        const s = document.querySelector(sel);
+        if (s && s.getBoundingClientRect().top < limite) paso++;
+      });
+      this.capas.forEach((el, i) => {
+        const puesta = i < paso;
+        el.style.opacity = puesta ? "1" : "0";
+        el.style.transform = puesta ? "translateY(0) scale(1)" : "translateY(16px) scale(.86)";
+      });
+      const hint = this.$("[data-pana-hint]");
+      const listo = this.$("[data-pana-listo]");
+      if (hint) hint.style.opacity = paso >= SECCIONES.length ? "0" : "1";
+      if (listo) listo.style.opacity = paso >= SECCIONES.length ? "1" : "0";
+    };
+    this.onScroll = () => {
+      if (this.pendiente) return;
+      this.pendiente = true;
+      requestAnimationFrame(() => { this.pendiente = false; this.sandwich(); });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll);
+    setTimeout(this.sandwich, 300);
+
+    this.aplicar();
+  }
+
+  componentDidUpdate() { this.aplicar(); }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearTimeout(this.salida);
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener("pointermove", this.onMove);
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+  }
+
+  $(sel) { return document.querySelector(sel); }
+
+  cerrarIntro() {
+    if (this.cerrando || !this.state.intro) return;
+    this.cerrando = true;
+    clearTimeout(this.timer);
+    const el = this.$("[data-pana-intro]");
+    if (!el) { this.setState({ intro: false }); return; }
+    el.style.pointerEvents = "none";
+    el.style.opacity = "0";
+    el.style.transform = "scale(1.06)";
+    this.salida = setTimeout(() => this.setState({ intro: false }), 620);
+  }
+
+  aplicar() {
+    const en = this.state.lang === "en";
+    document.querySelectorAll("[data-en]").forEach(el => {
+      if (!el.hasAttribute("data-es")) el.setAttribute("data-es", el.textContent.trim());
+      const t = en ? el.getAttribute("data-en") : el.getAttribute("data-es");
+      if (t && el.textContent.trim() !== t) el.textContent = t;
+    });
+    document.querySelectorAll("[data-pana-bread]").forEach(el => {
+      const i = parseInt(el.getAttribute("data-pana-bread"), 10);
+      if (isNaN(i)) return;
+      const forma = FORMAS[i % FORMAS.length];
+      if (el.style.borderRadius !== forma[0]) el.style.borderRadius = forma[0];
+      el.style.backgroundColor = forma[1];
+    });
+    document.querySelectorAll("[data-pana-img]").forEach(el => {
+      const v = el.getAttribute("data-pana-img") || "";
+      const quiere = v && v.indexOf("{{") === -1 ? 'url("' + v + '")' : "";
+      if (el.style.backgroundImage !== quiere) el.style.backgroundImage = quiere;
+      const fit = el.getAttribute("data-pana-fit");
+      if (fit === "contain") {
+        el.style.backgroundSize = "cover";
+        el.style.backgroundPosition = "center 45%";
+        if (el.parentElement) el.parentElement.style.height = "330px";
+      } else {
+        el.style.backgroundSize = "cover";
+        el.style.backgroundPosition = "center";
+        if (el.parentElement) el.parentElement.style.height = "210px";
+      }
+    });
+    document.querySelectorAll("[data-en-ph]").forEach(el => {
+      if (!el.hasAttribute("data-es-ph")) el.setAttribute("data-es-ph", el.getAttribute("placeholder") || "");
+      const t = en ? el.getAttribute("data-en-ph") : el.getAttribute("data-es-ph");
+      if (t != null && el.getAttribute("placeholder") !== t) el.setAttribute("placeholder", t);
+    });
+  }
+
+  renderVals() {
+    const en = this.state.lang === "en";
+    const ORDEN = ["app boda", "landing boda", "atelier romance", "kuaizi group", "barichara travel", "portafolios"];
+    const pos = p => { const i = ORDEN.indexOf(String(p.titulo || "").trim().toLowerCase()); return i === -1 ? -1 : i; };
+    const ordenados = BASE.slice().sort((a, b) => pos(a) - pos(b));
+    const SS = SERV;
+    const plato = this.state.plato.map(id => SS.find(s => s.id === id)).filter(Boolean);
+    const total = plato.reduce((a, s) => a + s.min, 0);
+    const mensual = plato.reduce((a, s) => a + s.mensual, 0);
+
+    return {
+      intro: this.state.intro,
+      saltarIntro: () => this.cerrarIntro(),
+      idiomaLabel: en ? "ES" : "EN",
+      toggleIdioma: () => {
+        const l = en ? "es" : "en";
+        this.setState({ lang: l });
+        try { localStorage.setItem("pana-web-idioma", l); } catch (e) {}
+      },
+
+      waHola: WA_LINK,
+
+      servicios: SS.slice().sort((a, b) => (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0)).map(s => ({
+        id: s.id,
+        destacado: !!s.destacado,
+        nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre,
+        desc: en && !s.tocado && s.descEn ? s.descEn : s.desc,
+        precio: s.min ? (en ? "from " : "desde ") + COP(s.min) : (s.mensual ? COP(s.mensual) + (en ? " / month" : " al mes") : "—"),
+        plazo: (en && !s.tocado && s.plazoEn ? s.plazoEn : s.plazo) + (s.min && s.mensual ? " · +" + COP(s.mensual) + (en ? "/mo" : "/mes") : "")
+      })),
+
+      proyectos: ordenados.map(p => ({
+        id: p.id,
+        titulo: en && p.tituloEn ? p.tituloEn : p.titulo,
+        tipo: en && p.tipoEn ? p.tipoEn : p.tipo,
+        lugar: p.lugar, ano: p.ano,
+        nota: en && p.notaEn ? p.notaEn : p.nota,
+        fondo: p.fondo || "#EFC79A",
+        img: p.img || "",
+        ajuste: p.ajuste === "contain" ? "contain" : "cover",
+        tieneImg: !!p.img,
+        sinImg: !p.img,
+        slot: (en ? "screenshot: " : "captura: ") + p.titulo.toLowerCase(),
+        link: p.link || "",
+        tieneLink: !!p.link
+      })),
+
+      ingredientes: SS.map((s, i) => ({
+        id: s.id,
+        forma: i % FORMAS.length,
+        nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre,
+        precio: s.min ? (en ? "from " : "desde ") + COP(s.min) : (s.mensual ? COP(s.mensual) + (en ? "/mo" : "/mes") : "—")
+      })),
+      arrastrar: e => { e.dataTransfer.setData("text/plain", e.currentTarget.getAttribute("data-id")); },
+      permitirDrop: e => e.preventDefault(),
+      soltarCapa: e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData("text/plain");
+        if (id && !this.state.plato.includes(id)) this.setState({ plato: this.state.plato.concat(id) });
+      },
+      agregarCapa: e => {
+        const id = e.currentTarget.getAttribute("data-id");
+        if (!this.state.plato.includes(id)) this.setState({ plato: this.state.plato.concat(id) });
+      },
+      quitarCapa: e => {
+        const id = e.currentTarget.getAttribute("data-id");
+        this.setState({ plato: this.state.plato.filter(x => x !== id) });
+      },
+      plato: plato.map(s => ({ id: s.id, nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre, precio: s.min ? COP(s.min) : COP(s.mensual) + (en ? "/mo" : "/mes") })),
+      platoVacio: plato.length === 0,
+      platoLleno: plato.length > 0,
+      totalPlato: COP(total),
+      mensualPlato: mensual ? (en ? "Plus " : "Más ") + COP(mensual) + (en ? " per month for support." : " al mes de soporte.") : (en ? "No monthly fee in this mix." : "Sin mensualidad en esta mezcla."),
+      waPlato: WA_LINK
+    };
+  }
+}
+</script>
+</body>
+</html>
