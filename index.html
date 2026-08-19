@@ -35,6 +35,10 @@
   @keyframes panaBlob { 0%,100% { transform:translate(0,0) scale(1) } 33% { transform:translate(46px,-34px) scale(1.09) } 66% { transform:translate(-34px,28px) scale(.94) } }
   @keyframes panaPuntos { 0% { background-position:0 0 } 100% { background-position:130px 130px } }
   @keyframes panaBrasa { 0%,100% { opacity:.35 } 50% { opacity:.9 } }
+  @keyframes panaSello { 0% { transform:scale(.4) rotate(-14deg); opacity:0 } 55% { transform:scale(1.16) rotate(3deg); opacity:1 } 100% { transform:scale(1) rotate(-3deg); opacity:1 } }
+  @keyframes panaTachado { 0% { clip-path:inset(0 100% 0 0) } 100% { clip-path:inset(0 0 0 0) } }
+  @keyframes panaTotal { 0% { transform:translateY(9px) scale(.94); opacity:0 } 100% { transform:translateY(0) scale(1); opacity:1 } }
+  @keyframes panaLatido { 0%,100% { transform:scale(1) rotate(-3deg) } 50% { transform:scale(1.05) rotate(-3deg) } }
 </style>
 </helmet>
 <div data-s="page" style="min-height:100vh; overflow-x:hidden; position:relative; z-index:0">
@@ -247,10 +251,24 @@
 
           <sc-if value="{{ platoLleno }}" hint-placeholder-val="{{ false }}">
             <div style="border-top:1px solid #55603F; padding-top:16px; margin-top:6px; display:flex; flex-direction:column; gap:12px">
+              <sc-if value="{{ hayDescuento }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap">
+                  <span style="display:flex; flex-direction:column; gap:3px">
+                    <span style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A9B58F; font-weight:700">{{ descuentoLabel }}</span>
+                    <span style="position:relative; display:inline-block; font-size:19px; color:#A9B58F; font-variant-numeric:tabular-nums; font-weight:700; align-self:flex-start">{{ brutoPlato }}
+                      <span aria-hidden="true" data-pana-tachado="1" style="position:absolute; left:-3px; right:-3px; top:52%; height:2.5px; background:#F6A06B; border-radius:2px; animation:panaTachado .5s cubic-bezier(.5,0,.2,1) both"></span>
+                    </span>
+                  </span>
+                  <span style="display:flex; align-items:center; justify-content:center; min-width:78px; height:56px; padding:0 14px; background:#F6A06B; color:#3D472B; border-radius:50% 50% 44% 44% / 58% 58% 42% 42%; font-family:Caprasimo, serif; font-size:22px; box-shadow:0 10px 20px rgba(0,0,0,.28); animation:panaSello .5s cubic-bezier(.2,1.5,.4,1) both, panaLatido 2.6s ease-in-out .6s infinite" data-pana-sello="1">{{ descuentoTexto }}</span>
+                </div>
+              </sc-if>
               <div style="display:flex; gap:12px; align-items:baseline; justify-content:space-between">
                 <span data-en="From" style="font-size:13px; color:#C9D3B4; font-weight:600">Desde</span>
-                <span style="font-family:Caprasimo, serif; font-size:30px; color:#F6A06B; font-variant-numeric:tabular-nums">{{ totalPlato }}</span>
+                <span data-pana-total="{{ totalPlato }}" style="font-family:Caprasimo, serif; font-size:34px; color:#F6A06B; font-variant-numeric:tabular-nums; animation:panaTotal .4s cubic-bezier(.2,1.3,.4,1) both">{{ totalPlato }}</span>
               </div>
+              <sc-if value="{{ hayMas }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:12.5px; color:#F6A06B; font-weight:700">{{ siguienteTexto }}</div>
+              </sc-if>
               <div style="font-size:12.5px; color:#C9D3B4">{{ mensualPlato }}</div>
               <a href="{{ waPlato }}" target="_blank" data-en="Send this on WhatsApp" style="background:#C67139; color:#FFF8EE; padding:14px 20px; border-radius:13px; font-size:14.5px; font-weight:800; text-align:center" style-hover="background:#F6A06B; color:#3D472B">Mandar esto por WhatsApp</a>
             </div>
@@ -410,12 +428,14 @@ const WA_LINK = "https://wa.link/gjcoi7";
 const COP = n => "$" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const SERV = [
-  { id:"landing", destacado:true, nombre:"Landing de una página", nombreEn:"One-page landing", desc:"Una página que carga rápido, se ve bien en celular y termina en WhatsApp o reserva.", descEn:"One page that loads fast, looks right on a phone and ends in WhatsApp or a booking.", min:1200000, mensual:0, plazo:"2 semanas", plazoEn:"2 weeks" },
+  { id:"landing", destacado:true, nombre:"Landing", nombreEn:"Landing page", desc:"Una página que carga rápido, se ve bien en celular y termina en WhatsApp o reserva.", descEn:"One page that loads fast, looks right on a phone and ends in WhatsApp or a booking.", min:1500000, mensual:0, plazo:"2 semanas", plazoEn:"2 weeks" },
   { id:"web", destacado:true, nombre:"Web de 4 a 6 páginas", nombreEn:"4 to 6 page website", desc:"Sitio completo, autoadministrable, con lo que el negocio ya vende bien puesto arriba.", descEn:"A full site you can edit yourself, with whatever already sells best up top.", min:2500000, mensual:0, plazo:"4 a 6 semanas", plazoEn:"4 to 6 weeks" },
-  { id:"reservas", nombre:"Reservas y disponibilidad", nombreEn:"Bookings and availability", desc:"Calendario, cupos y pago en línea. Menos mensajes de \"¿tienen para este fin de semana?\".", descEn:"Calendar, slots and online payment. Fewer \"do you have room this weekend?\" messages.", min:3000000, mensual:150000, plazo:"5 a 7 semanas", plazoEn:"5 to 7 weeks" },
-  { id:"ecommerce", nombre:"Tienda online", nombreEn:"Online store", desc:"Catálogo, carrito, pasarela y envíos. Inventario que no se pelea con el del local.", descEn:"Catalogue, cart, payments and shipping. Stock that agrees with the store's own.", min:3500000, mensual:200000, plazo:"6 a 8 semanas", plazoEn:"6 to 8 weeks" },
+  { id:"portafolio", destacado:true, nombre:"Portafolio", nombreEn:"Portfolio", desc:"Dale una nueva visibilidad a tus conocimientos o habilidades con un portafolio interactivo sin plantillas comunes", descEn:"Give your skills and work new visibility with an interactive portfolio, no stock templates.", min:350000, mensual:0, plazo:"2 semanas", plazoEn:"2 weeks" },
+  { id:"app", destacado:true, nombre:"App", nombreEn:"App", desc:"Podemos crear una app para tu negocio centrandonos en un lugar dónde tus clientes encontrarán accebilidad y rapidez al mismo tiempo", descEn:"We build an app for your business: one place where your clients find speed and easy access at once.", min:3000000, mensual:0, plazo:"4 a 6 semanas", plazoEn:"4 to 6 weeks" },
+  { id:"reservas", nombre:"Software Personalizado", nombreEn:"Custom software", desc:"Calendario, CRM, cupos y pago en línea. Menos mensajes de \"¿tienen para este fin de semana?\".", descEn:"Calendar, CRM, slots and online payment. Fewer \"do you have room this weekend?\" messages.", min:3000000, mensual:0, plazo:"4 a 6 semanas", plazoEn:"4 to 6 weeks" },
+  { id:"ecommerce", nombre:"Tienda online", nombreEn:"Online store", desc:"Catálogo, carrito, pasarela y envíos. Inventario que no se pelea con el del local.", descEn:"Catalogue, cart, payments and shipping. Stock that agrees with the store's own.", min:3500000, mensual:0, plazo:"4 a 6 semanas", plazoEn:"4 to 6 weeks" },
   { id:"identidad", nombre:"Identidad de marca", nombreEn:"Brand identity", desc:"Logo, paleta, tipografías y plantillas listas para Instagram y para imprimir.", descEn:"Logo, palette, type and templates ready for Instagram and for print.", min:2500000, mensual:0, plazo:"3 a 4 semanas", plazoEn:"3 to 4 weeks" },
-  { id:"autowa", nombre:"Automatización de WhatsApp con IA", nombreEn:"WhatsApp automation with AI", desc:"Responde precios, horarios y disponibilidad a toda hora. Pasa a una persona cuando toca.", descEn:"Answers prices, hours and availability around the clock. Hands over to a person when it should.", min:1500000, mensual:150000, plazo:"3 semanas", plazoEn:"3 weeks" },
+  { id:"rebranding", nombre:"Rebranding", nombreEn:"Rebranding", desc:"Dale una nueva imagen a tu negocio, haciendolo más llamativo y listo para salir del horno", descEn:"Give your business a new look, sharper and ready to come out of the oven.", min:1500000, mensual:150000, plazo:"3 semanas", plazoEn:"3 weeks" },
   { id:"soporte", nombre:"Mantenimiento y soporte", nombreEn:"Maintenance and support", desc:"Actualizaciones, respaldos y cambios chicos del mes. Sin cobrar por cada ajuste.", descEn:"Updates, backups and the small monthly changes. No charge per tweak.", min:0, mensual:300000, plazo:"mensual", plazoEn:"monthly" }
 ];
 
@@ -423,9 +443,9 @@ const BASE = [
   { id:"b1", titulo:"Barichara Travel", tipo:"Web", tipoEn:"Website", lugar:"Barichara, Colombia", ano:"2025", nota:"El viajero entiende los planes de una y escribe sin tener que preguntar tres veces.", notaEn:"Travellers get the plans right away and write in without asking three times.", fondo:"#F6A06B", img:"assets/barichara-travel.png", link:"" },
   { id:"b2", titulo:"Atelier Romance", tipo:"Web", tipoEn:"Website", lugar:"Colombia", ano:"2025", nota:"Web de bodas donde el trabajo se ve grande y contactarlos queda a un toque.", notaEn:"A wedding site where the work looks big and getting in touch is one tap away.", fondo:"#8FA073", img:"assets/atelier-romance.png", link:"https://atelieromance.github.io/atelieromace.bybaricharatravel/index.html" },
   { id:"b3", titulo:"Kuaizi Group", tipo:"Web y portafolio", tipoEn:"Website and portfolio", lugar:"LATAM · China", ano:"2025", nota:"Sitio y portafolio para presentarse ante clientes de importación sin tener que explicar tanto.", notaEn:"Site and portfolio to introduce themselves to import clients without explaining so much.", fondo:"#C67139", img:"assets/kuaizi-group.png", link:"https://kuaizigroup.com/" },
-  { id:"b4", titulo:"App Boda", tipo:"App para los invitados", tipoEn:"App for the guests", lugar:"Colombia", ano:"2025", nota:"La invitación vive en el celular: se toca el sello y ahí está toda la boda.", notaEn:"The invitation lives on the phone: tap the seal and the whole wedding is there.", fondo:"#3D472B", img:"assets/app-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/base-app/" },
-  { id:"b6", titulo:"Landing Boda", tipo:"Landing de una página", tipoEn:"One-page landing", lugar:"Colombia", ano:"2025", nota:"Una historia que se abre como un libro y termina en la confirmación de los invitados.", notaEn:"A story that opens like a book and ends with the guests confirming.", fondo:"#2A2340", img:"assets/landing-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/appcuento/" },
-  { id:"b7", titulo:"Portafolios", tipo:"Portafolio interactivo", tipoEn:"Interactive portfolio", lugar:"San Gil, Santander", ano:"2026", nota:"Portafolio de fotografía que se abre como un obturador y deja el trabajo al frente.", notaEn:"A photography portfolio that opens like a shutter and puts the work up front.", fondo:"#1A1119", img:"assets/portafolios.png", link:"https://yoshdealba.github.io/Portafolio/" },
+  { id:"b4", titulo:"App Boda", tipo:"APP", tipoEn:"App", lugar:"Paris", ano:"2026", nota:"Una misma app en varios formatos: una para los invitados y una para quien organiza.", notaEn:"One app in several formats: one for guests, one for whoever is organising.", fondo:"#F6A06B", img:"assets/app-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/base-app/" },
+  { id:"b6", titulo:"Landing Boda", tipo:"Landing page", tipoEn:"Landing page", lugar:"Colombia", ano:"2026", nota:"Una landing perfecta para la invitación de tu boda, fácil, sencilla y hermosa", notaEn:"The perfect landing for your wedding invitation: simple, easy and beautiful.", fondo:"#3D472B", img:"assets/landing-boda.png", ajuste:"contain", link:"https://atelieromance.github.io/appcuento/" },
+  { id:"b7", titulo:"Portafolios", tipo:"Portafolio interactivo", tipoEn:"Interactive portfolio", lugar:"San Gil, Santander", ano:"2026", nota:"Portafolio de fotografía que se abre como un obturador y deja el trabajo al frente.", notaEn:"A photography portfolio that opens like a shutter and puts the work up front.", fondo:"#1A1119", img:"assets/portafolios.png", link:"https://yoshdealba.github.io/Portafolio/" }
 ];
 
 const FORMAS = [
@@ -534,7 +554,31 @@ class Component extends DCLogic {
     this.aplicar();
   }
 
-  componentDidUpdate() { this.aplicar(); }
+  componentDidUpdate() {
+    this.aplicar();
+    const t = this.$("[data-pana-total]");
+    if (t) {
+      const v = t.getAttribute("data-pana-total");
+      if (v !== this.ultimoTotal) {
+        this.ultimoTotal = v;
+        t.style.animation = "none";
+        void t.offsetWidth;
+        t.style.animation = "panaTotal .4s cubic-bezier(.2,1.3,.4,1) both";
+        const sello = this.$("[data-pana-sello]");
+        if (sello) {
+          sello.style.animation = "none";
+          void sello.offsetWidth;
+          sello.style.animation = "panaSello .5s cubic-bezier(.2,1.5,.4,1) both, panaLatido 2.6s ease-in-out .6s infinite";
+        }
+        const tach = this.$("[data-pana-tachado]");
+        if (tach) {
+          tach.style.animation = "none";
+          void tach.offsetWidth;
+          tach.style.animation = "panaTachado .5s cubic-bezier(.5,0,.2,1) both";
+        }
+      }
+    }
+  }
 
   componentWillUnmount() {
     clearTimeout(this.timer);
@@ -602,7 +646,11 @@ class Component extends DCLogic {
     const ordenados = BASE.slice().sort((a, b) => pos(a) - pos(b));
     const SS = SERV;
     const plato = this.state.plato.map(id => SS.find(s => s.id === id)).filter(Boolean);
-    const total = plato.reduce((a, s) => a + s.min, 0);
+    const ESCALA = [0, 5, 10, 15, 20, 30, 40, 50, 55, 60];
+    const pct = ESCALA[Math.min(plato.length, ESCALA.length - 1)] || 0;
+    const bruto = plato.reduce((a, s) => a + s.min, 0);
+    const total = Math.round(bruto * (100 - pct) / 100);
+    const siguiente = ESCALA[Math.min(plato.length + 1, ESCALA.length - 1)];
     const mensual = plato.reduce((a, s) => a + s.mensual, 0);
 
     return {
@@ -620,10 +668,10 @@ class Component extends DCLogic {
       servicios: SS.slice().sort((a, b) => (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0)).map(s => ({
         id: s.id,
         destacado: !!s.destacado,
-        nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre,
-        desc: en && !s.tocado && s.descEn ? s.descEn : s.desc,
+        nombre: en && s.nombreEn ? s.nombreEn : s.nombre,
+        desc: en && s.descEn ? s.descEn : s.desc,
         precio: s.min ? (en ? "from " : "desde ") + COP(s.min) : (s.mensual ? COP(s.mensual) + (en ? " / month" : " al mes") : "—"),
-        plazo: (en && !s.tocado && s.plazoEn ? s.plazoEn : s.plazo) + (s.min && s.mensual ? " · +" + COP(s.mensual) + (en ? "/mo" : "/mes") : "")
+        plazo: (en && s.plazoEn ? s.plazoEn : s.plazo) + (s.min && s.mensual ? " · +" + COP(s.mensual) + (en ? "/mo" : "/mes") : "")
       })),
 
       proyectos: ordenados.map(p => ({
@@ -645,7 +693,7 @@ class Component extends DCLogic {
       ingredientes: SS.map((s, i) => ({
         id: s.id,
         forma: i % FORMAS.length,
-        nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre,
+        nombre: en && s.nombreEn ? s.nombreEn : s.nombre,
         precio: s.min ? (en ? "from " : "desde ") + COP(s.min) : (s.mensual ? COP(s.mensual) + (en ? "/mo" : "/mes") : "—")
       })),
       arrastrar: e => { e.dataTransfer.setData("text/plain", e.currentTarget.getAttribute("data-id")); },
@@ -663,10 +711,16 @@ class Component extends DCLogic {
         const id = e.currentTarget.getAttribute("data-id");
         this.setState({ plato: this.state.plato.filter(x => x !== id) });
       },
-      plato: plato.map(s => ({ id: s.id, nombre: en && !s.tocado && s.nombreEn ? s.nombreEn : s.nombre, precio: s.min ? COP(s.min) : COP(s.mensual) + (en ? "/mo" : "/mes") })),
+      plato: plato.map(s => ({ id: s.id, nombre: en && s.nombreEn ? s.nombreEn : s.nombre, precio: s.min ? COP(s.min) : COP(s.mensual) + (en ? "/mo" : "/mes") })),
       platoVacio: plato.length === 0,
       platoLleno: plato.length > 0,
       totalPlato: COP(total),
+      hayDescuento: pct > 0,
+      brutoPlato: COP(bruto),
+      descuentoTexto: "−" + pct + "%",
+      descuentoLabel: en ? (plato.length === 1 ? "1 bread in the oven" : plato.length + " breads in the oven") : (plato.length === 1 ? "1 pan en el horno" : plato.length + " panes en el horno"),
+      hayMas: siguiente > pct,
+      siguienteTexto: en ? "Add one more and the discount goes up to " + siguiente + "%." : "Mete uno más y el descuento sube al " + siguiente + "%.",
       mensualPlato: mensual ? (en ? "Plus " : "Más ") + COP(mensual) + (en ? " per month for support." : " al mes de soporte.") : (en ? "No monthly fee in this mix." : "Sin mensualidad en esta mezcla."),
       waPlato: WA_LINK
     };
